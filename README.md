@@ -44,11 +44,11 @@ $ conda env create -f environment.yml
 ```
 
 This will create a new conda environment with all needed packages for these lectures
-named `ml-lecture`.
+named `ml`.
 
 To use this environment, run
 ```
-$ conda activate ml-lecture
+$ conda activate ml
 ```
 everytime before you start working on these lectures.
 
