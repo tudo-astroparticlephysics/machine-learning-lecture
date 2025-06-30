@@ -1,4 +1,4 @@
-# A machine learning lecture <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tudo-astroparticlephysics/machine-learning-lecture/main) 
+# A machine learning lecture <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tudo-astroparticlephysics/machine-learning-lecture/main)
 
 This collection of notebooks was started for a lecture on machine learning at the Universitat Autònoma de Barcelona.
 It has since grown into a large part of the statistical methods lecture (SMD) at the Physics department at TU Dortmund University.
@@ -29,13 +29,13 @@ The lecture material (e.g. jupyter notebooks) are shared under the Creative Comm
 
 
 ## Install `conda`
+
 To make sure, all needed packages are installed in an environment for these lectures, we use
 `conda`.
 
 Download and install [Anaconda](https://www.anaconda.com/products/individual#Downloads) for a large collection of packages or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for a minimal starting point.
 
 ## Setup the environment
-
 
 After installing conda, run
 
@@ -51,6 +51,11 @@ To use this environment, run
 $ conda activate ml
 ```
 everytime before you start working on these lectures.
+
+Before committing any changes, make sure the pre-commit hooks are installed:
+```
+$ pre-commit install
+```
 
 From time to time, we will update the `environment.yml` with new versions or
 additional packages, to then update your environment, run:

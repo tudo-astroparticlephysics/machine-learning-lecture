@@ -12,13 +12,14 @@ from matplotlib.colors import ListedColormap, to_hex
 rng = np.random.default_rng(0)
 
 
-colors = ['xkcd:sky', 'xkcd:grass']
+colors = ["xkcd:sky", "xkcd:grass"]
 cmap = ListedColormap(colors)
+
 
 def create_discrete_colormap(n_classes):
     if n_classes == 2:
         return cmap.copy()
-    return ListedColormap([f'C{i}' for i in range(n_classes)])
+    return ListedColormap([f"C{i}" for i in range(n_classes)])
 
 
 def set_plot_style():
@@ -34,7 +35,7 @@ def set_plot_style():
 
 def twospirals(n_samples, noise=0.5, rng=rng):
     """
-     Returns the two spirals dataset.
+    Returns the two spirals dataset.
     """
     n = np.sqrt(rng.uniform(size=(n_samples, 1))) * 360 * (2 * np.pi) / 360
     d1x = -np.cos(n) * n + rng.uniform((n_samples, 1)) * noise
@@ -67,7 +68,9 @@ def draw_linear_regression_function(reg, ax=None, **kwargs):
 def plot_3d_views(X, y, cmap=cmap):
     from mpl_toolkits.mplot3d import Axes3D  # noqa
 
-    fig, axs = plt.subplots(2, 2, subplot_kw={'projection': '3d'}, constrained_layout=False)
+    fig, axs = plt.subplots(
+        2, 2, subplot_kw={"projection": "3d"}, constrained_layout=False
+    )
 
     for ax in axs.ravel():
         ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=y, cmap=cmap, lw=0)
@@ -82,6 +85,7 @@ def plot_3d_views(X, y, cmap=cmap):
     axs[1, 0].view_init(0, 90)
     axs[1, 1].view_init(90, 0)
     fig.subplots_adjust(wspace=0.005, hspace=0.005)
+
 
 def draw_tree(clf):
     import pydotplus
@@ -176,7 +180,7 @@ def plot_bars_and_confusion(
     axes=None,
     vmin=None,
     vmax=None,
-    cmap='inferno',
+    cmap="inferno",
     title=None,
     bar_color=None,
 ):
@@ -189,7 +193,7 @@ def plot_bars_and_confusion(
     if not isinstance(prediction, pd.Series):
         prediction = pd.Series(prediction)
 
-    correct = pd.Series(np.where(truth.values == prediction.values, 'Correct', 'Wrong'))
+    correct = pd.Series(np.where(truth.values == prediction.values, "Correct", "Wrong"))
 
     truth.sort_index(inplace=True)
     prediction.sort_index(inplace=True)

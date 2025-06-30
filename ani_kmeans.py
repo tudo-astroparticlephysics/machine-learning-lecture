@@ -9,7 +9,7 @@ import numpy as np
 
 k = 4
 n_iters = 25
-discrete_cmap = ListedColormap([f'C{i}' for i in range(k)])
+discrete_cmap = ListedColormap([f"C{i}" for i in range(k)])
 fps = 25
 interval = 1000 / fps
 time_per_iter = 1
@@ -17,8 +17,11 @@ frames = n_iters * time_per_iter * fps
 
 # choose inital cluster centers
 X, y = make_blobs(
-    n_samples=500, centers=k, center_box=(-2, 2),
-    cluster_std=0.5, random_state=1,
+    n_samples=500,
+    centers=k,
+    center_box=(-2, 2),
+    cluster_std=0.5,
+    random_state=1,
 )
 
 fig = plt.figure(figsize=(12.8, 7.2), dpi=100)
@@ -34,24 +37,25 @@ center_history = np.zeros((n_iters, k, 2))
 
 
 center_lines = [ax.plot([], [])[0] for _ in range(k)]
-points = ax.scatter(X[:, 0], X[:, 1], c='k', cmap=discrete_cmap, alpha=0.5)
+points = ax.scatter(X[:, 0], X[:, 1], c="k", cmap=discrete_cmap, alpha=0.5)
 center_plot = ax.scatter(
     init_centers[:, 0],
     init_centers[:, 1],
     c=np.arange(k),
     cmap=discrete_cmap,
-    marker='h',
-    edgecolor='k',
+    marker="h",
+    edgecolor="k",
     s=400,
-    label='cluster center',
+    label="cluster center",
 )
 
-ax.legend(loc='upper right')
+ax.legend(loc="upper right")
 
 
 def init():
-    t = ax.set_title('iteration  0')
+    t = ax.set_title("iteration  0")
     return *center_lines, points, t
+
 
 def update(frame, bar=None):
     if bar is not None:
@@ -68,15 +72,24 @@ def update(frame, bar=None):
         center_history[i] = init_centers
 
     for j, line in enumerate(center_lines):
-        line.set_data(center_history[:i + 1, j, 0], center_history[:i + 1, j, 1])
+        line.set_data(center_history[: i + 1, j, 0], center_history[: i + 1, j, 1])
 
     points.set_cmap(discrete_cmap)
-    t = ax.set_title('iteration {}'.format(i + 1))
+    t = ax.set_title("iteration {}".format(i + 1))
 
     return *center_lines, points, t
 
+
 bar = tqdm(total=frames)
-ani = FuncAnimation(fig, update, blit=True, init_func=init, frames=frames, fargs=(bar,), interval=interval)
+ani = FuncAnimation(
+    fig,
+    update,
+    blit=True,
+    init_func=init,
+    frames=frames,
+    fargs=(bar,),
+    interval=interval,
+)
 ani.save("kmeans_clustering.mp4")
 ani.pause()
 plt.close(fig)
