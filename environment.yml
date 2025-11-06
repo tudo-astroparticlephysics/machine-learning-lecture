@@ -30,8 +30,8 @@ dependencies:
   - pytables
   - pytest
   - python-graphviz
-  - pytorch=2.1
-  - pytorch-cpu=2.1
+  - pytorch=2.6
+  - pytorch-cpu=2.6
   - ruff
   - scikit-image
   - scikit-learn=1.5
